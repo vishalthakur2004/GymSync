@@ -9,6 +9,7 @@ import trainerRoutes from "./routes/trainerRoutes.js";
 import memberRoutes from "./routes/memberRoutes.js";
 import planRoutes from "./routes/planRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 const app = express();
 
