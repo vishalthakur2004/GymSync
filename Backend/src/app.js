@@ -5,6 +5,10 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import trainerRoutes from "./routes/trainerRoutes.js";
+import memberRoutes from "./routes/memberRoutes.js";
+import planRoutes from "./routes/planRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
 const app = express();
 
