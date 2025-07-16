@@ -1,14 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-const ThemeContext = createContext();
-
-const useThemeContext = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useThemeContext must be used within a ThemeProvider");
-  }
-  return context;
-};
+export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
