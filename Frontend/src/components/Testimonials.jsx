@@ -121,7 +121,7 @@ const Testimonials = () => {
                   transition={{ delay: 0.3, type: "spring" }}
                   className="absolute top-4 right-4 opacity-10"
                 >
-                  <QuoteIcon className="w-16 h-16 text-blue-600" />
+                  <ChatBubbleLeftIcon className="w-16 h-16 text-blue-600" />
                 </motion.div>
 
                 {/* Rating Stars */}
