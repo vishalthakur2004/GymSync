@@ -27,6 +27,10 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/trainer", trainerRoutes);
+app.use("/api/member", memberRoutes);
+app.use("/api/plans", planRoutes);
+app.use("/api/payments", paymentRoutes);
 
 app.get("/", (req, res) => {
   res.json({
