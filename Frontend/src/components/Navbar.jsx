@@ -15,14 +15,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (
-      savedTheme === "dark" ||
-      (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
+    // Check if dark mode is already applied to the DOM
+    const isDarkModeEnabled =
+      document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDarkModeEnabled);
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
