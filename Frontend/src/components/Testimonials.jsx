@@ -1,35 +1,38 @@
-import { motion } from 'framer-motion';
-import { StarIcon, QuoteIcon } from '@heroicons/react/24/solid';
+import { motion } from "framer-motion";
+import { StarIcon, QuoteIcon } from "@heroicons/react/24/solid";
 
 const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      role: 'Fitness Enthusiast',
-      image: '👩‍💼',
+      name: "Sarah Johnson",
+      role: "Fitness Enthusiast",
+      image: "👩‍💼",
       rating: 5,
-      content: 'GymSync has completely transformed my fitness journey. The AI-powered workout plans adapt to my progress, and having access to personal trainers through the app is incredible. I\'ve never been more motivated!',
-      highlight: 'Lost 25 lbs in 3 months'
+      content:
+        "GymSync has completely transformed my fitness journey. The AI-powered workout plans adapt to my progress, and having access to personal trainers through the app is incredible. I've never been more motivated!",
+      highlight: "Lost 25 lbs in 3 months",
     },
     {
       id: 2,
-      name: 'Mike Rodriguez',
-      role: 'Gym Owner',
-      image: '👨‍💼',
+      name: "Mike Rodriguez",
+      role: "Gym Owner",
+      image: "👨‍💼",
       rating: 5,
-      content: 'As a gym owner, GymSync has revolutionized how we manage our members. The real-time chat support and member engagement features have significantly improved our retention rates.',
-      highlight: '40% increase in member retention'
+      content:
+        "As a gym owner, GymSync has revolutionized how we manage our members. The real-time chat support and member engagement features have significantly improved our retention rates.",
+      highlight: "40% increase in member retention",
     },
     {
       id: 3,
-      name: 'Emily Chen',
-      role: 'Personal Trainer',
-      image: '👩‍🏫',
+      name: "Emily Chen",
+      role: "Personal Trainer",
+      image: "👩‍🏫",
       rating: 5,
-      content: 'The platform makes it so easy to connect with clients and track their progress. The AI assistant helps me create better nutrition plans, and my clients love the convenience of having everything in one place.',
-      highlight: 'Manages 50+ clients efficiently'
-    }
+      content:
+        "The platform makes it so easy to connect with clients and track their progress. The AI assistant helps me create better nutrition plans, and my clients love the convenience of having everything in one place.",
+      highlight: "Manages 50+ clients efficiently",
+    },
   ];
 
   const containerVariants = {
@@ -37,9 +40,9 @@ const Testimonials = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
@@ -49,9 +52,9 @@ const Testimonials = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -77,15 +80,16 @@ const Testimonials = () => {
           </motion.div>
 
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            What Our{' '}
+            What Our{" "}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Users Say
             </span>
           </h2>
 
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Join thousands of satisfied users who have transformed their fitness journey 
-            with GymSync. Here's what they have to say about their experience.
+            Join thousands of satisfied users who have transformed their fitness
+            journey with GymSync. Here's what they have to say about their
+            experience.
           </p>
         </motion.div>
 
@@ -101,9 +105,9 @@ const Testimonials = () => {
             <motion.div
               key={testimonial.id}
               variants={cardVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="group"
             >
@@ -245,7 +249,7 @@ const Testimonials = () => {
                 <div className="text-gray-600 dark:text-gray-400">
                   Would Recommend
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
