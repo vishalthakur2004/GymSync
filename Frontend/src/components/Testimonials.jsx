@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { StarIcon, QuoteIcon } from "@heroicons/react/24/solid";
+import { StarIcon } from "@heroicons/react/24/solid";
+import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 
 const Testimonials = () => {
   const testimonials = [
