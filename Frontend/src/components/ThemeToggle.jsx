@@ -3,7 +3,7 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import useTheme from "../hooks/useTheme";
 
 const ThemeToggle = ({ className = "" }) => {
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
 
   return (
     <motion.button
