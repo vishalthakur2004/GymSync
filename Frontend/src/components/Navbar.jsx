@@ -6,16 +6,11 @@ import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if dark mode is already applied to the DOM
-    const isDarkModeEnabled =
-      document.documentElement.classList.contains("dark");
-    setIsDarkMode(isDarkModeEnabled);
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -23,17 +18,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-  };
 
   const navLinks = [
     { name: "Home", href: "#home" },
