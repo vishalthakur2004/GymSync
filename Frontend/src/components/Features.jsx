@@ -105,7 +105,7 @@ const Features = () => {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 lg:grid-cols-2 gap-8"
         >
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <motion.div
               key={feature.title}
               variants={itemVariants}
