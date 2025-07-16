@@ -32,6 +32,7 @@ app.use("/api/trainer", trainerRoutes);
 app.use("/api/member", memberRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.get("/", (req, res) => {
   res.json({
