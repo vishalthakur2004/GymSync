@@ -39,14 +39,13 @@ app.get("/", (req, res) => {
   res.json({
     success: true,
     message: "Gym Management API is running",
+    timestamp: new Date().toISOString(),
+    version: "1.0.0",
   });
 });
 
-app.use("*", (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "Route not found",
-  });
-});
+// Error handling middleware
+app.use(notFound);
+app.use(errorHandler);
 
 export { app };
