@@ -6,7 +6,7 @@ import {
   XMarkIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {

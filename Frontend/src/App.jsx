@@ -4,8 +4,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { AuthProvider } from "./contexts/AuthContext";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "./hooks/useAuth";
+import { useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import FeaturesPage from "./pages/FeaturesPage";
 import PlansPage from "./pages/PlansPage";
@@ -89,72 +89,76 @@ const AdminDashboard = () => (
 );
 
 function App() {
+  const { checkAuthStatus } = useAuth();
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
   return (
-    <AuthProvider>
-      <Router>
-        <div className="App">
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/features" element={<FeaturesPage />} />
-            <Route path="/plans" element={<PlansPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+    <Router>
+      <div className="App">
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/plans" element={<PlansPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-            {/* Protected Dashboard Routes */}
-            <Route
-              path="/dashboard/member"
-              element={
-                <ProtectedRoute allowedRoles={["member"]}>
-                  <MemberDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/dashboard/trainer"
-              element={
-                <ProtectedRoute allowedRoles={["trainer"]}>
-                  <TrainerDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/dashboard/admin"
-              element={
-                <ProtectedRoute allowedRoles={["admin"]}>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            />
-
-            {/* Catch all route */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-
-          {/* Global Toast Notifications */}
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: "#1f2937",
-                color: "#fff",
-              },
-              success: {
-                style: {
-                  background: "#10b981",
-                },
-              },
-              error: {
-                style: {
-                  background: "#ef4444",
-                },
-              },
-            }}
+          {/* Protected Dashboard Routes */}
+          <Route
+            path="/dashboard/member"
+            element={
+              <ProtectedRoute allowedRoles={["member"]}>
+                <MemberDashboard />
+              </ProtectedRoute>
+            }
           />
-        </div>
-      </Router>
-    </AuthProvider>
+          <Route
+            path="/dashboard/trainer"
+            element={
+              <ProtectedRoute allowedRoles={["trainer"]}>
+                <TrainerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/admin"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Catch all route */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+
+        {/* Global Toast Notifications */}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: "#1f2937",
+              color: "#fff",
+            },
+            success: {
+              style: {
+                background: "#10b981",
+              },
+            },
+            error: {
+              style: {
+                background: "#ef4444",
+              },
+            },
+          }}
+        />
+      </div>
+    </Router>
   );
 }
 

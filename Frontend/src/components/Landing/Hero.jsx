@@ -3,7 +3,7 @@ import { ChevronRightIcon, PlayIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { landingService } from "../../services/authService";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import Lottie from "lottie-react";
 
 const Hero = () => {
