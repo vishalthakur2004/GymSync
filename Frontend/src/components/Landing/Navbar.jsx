@@ -25,6 +25,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showUserMenu && !event.target.closest(".user-menu-container")) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showUserMenu]);
+
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Features", href: "#features" },
@@ -79,7 +91,7 @@ const Navbar = () => {
             {/* Auth Buttons / User Menu */}
             <div className="hidden md:flex items-center space-x-2">
               {isAuthenticated ? (
-                <div className="relative">
+                <div className="relative user-menu-container">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
