@@ -38,9 +38,9 @@ const Navbar = () => {
   }, [showUserMenu]);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Home", href: "/" },
+    { name: "Features", href: "/features" },
+    { name: "Pricing", href: "/plans" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -71,16 +71,27 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                whileHover={{ y: -2 }}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-              >
-                {link.name}
-              </motion.a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  whileHover={{ y: -2 }}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                >
+                  {link.name}
+                </motion.a>
+              ) : (
+                <motion.button
+                  key={link.name}
+                  onClick={() => navigate(link.href)}
+                  whileHover={{ y: -2 }}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                >
+                  {link.name}
+                </motion.button>
+              ),
+            )}
           </div>
 
           {/* Right Side Actions */}
@@ -188,16 +199,29 @@ const Navbar = () => {
           className="md:hidden overflow-hidden"
         >
           <div className="py-4 space-y-4 border-t border-gray-200 dark:border-gray-700">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    navigate(link.href);
+                    setIsMenuOpen(false);
+                  }}
+                  className="block text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {link.name}
+                </button>
+              ),
+            )}
             <div className="flex flex-col space-y-2 pt-4">
               {isAuthenticated ? (
                 <>
