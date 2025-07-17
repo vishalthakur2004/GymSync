@@ -57,8 +57,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.05 }}
+            onClick={() => navigate("/")}
             className="flex items-center space-x-2"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -67,7 +68,7 @@ const Navbar = () => {
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               GymSync
             </span>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
