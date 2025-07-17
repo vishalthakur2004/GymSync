@@ -147,13 +147,122 @@ const authService = {
 
 // Landing page data service
 export const landingService = {
-  // Get app statistics
+  // Get main landing page data
+  getLandingData: async () => {
+    try {
+      const response = await api.get("/landing");
+      return response.data;
+    } catch (error) {
+      // Return fallback data if API fails
+      return {
+        success: true,
+        data: {
+          heading: "Transform Your Fitness Journey with GymSync",
+          subheading:
+            "Your ultimate gym management platform with AI-powered features.",
+          ctaButtons: [
+            { label: "Join Now", link: "/register", style: "primary" },
+            { label: "Explore Plans", link: "/plans", style: "secondary" },
+          ],
+          heroStats: {
+            activeUsers: 10000,
+            trainers: 150,
+            workoutsCompleted: 85000,
+            satisfaction: 98,
+          },
+        },
+      };
+    }
+  },
+
+  // Get features for features section
+  getFeatures: async () => {
+    try {
+      const response = await api.get("/landing/features");
+      return response.data;
+    } catch (error) {
+      // Return fallback data if API fails
+      return {
+        success: true,
+        data: [
+          {
+            title: "AI-Powered Workouts",
+            description: "Personalized workout plans created by AI",
+            icon: "🤖",
+            highlights: [
+              "Adaptive routines",
+              "Progress tracking",
+              "Smart recommendations",
+            ],
+          },
+          {
+            title: "Personal Trainers",
+            description: "Connect with certified fitness professionals",
+            icon: "👨‍💼",
+            highlights: [
+              "Expert guidance",
+              "Custom programs",
+              "1-on-1 sessions",
+            ],
+          },
+          {
+            title: "Real-Time Support",
+            description: "Get instant help and motivation",
+            icon: "💬",
+            highlights: ["24/7 chat", "Community support", "Expert advice"],
+          },
+        ],
+      };
+    }
+  },
+
+  // Get subscription plans
+  getPlans: async () => {
+    try {
+      const response = await api.get("/landing/plans");
+      return response.data;
+    } catch (error) {
+      // Return fallback data if API fails
+      return {
+        success: true,
+        data: [
+          {
+            id: "basic",
+            name: "Basic Membership",
+            description: "Perfect for beginners",
+            price: 29,
+            duration: "month",
+            features: ["Gym access", "Basic plans", "Progress tracking"],
+            popular: false,
+            buttonText: "Get Started",
+            buttonLink: "/register",
+          },
+          {
+            id: "premium",
+            name: "Premium Membership",
+            description: "Advanced features for enthusiasts",
+            price: 59,
+            duration: "month",
+            features: [
+              "Everything in Basic",
+              "Personal trainer",
+              "Custom plans",
+            ],
+            popular: true,
+            buttonText: "Get Started",
+            buttonLink: "/register",
+          },
+        ],
+      };
+    }
+  },
+
+  // Get app statistics (legacy support)
   getStats: async () => {
     try {
       const response = await api.get("/stats");
       return response.data;
     } catch (error) {
-      // Return fallback data if API fails
       return {
         success: true,
         stats: {
@@ -167,30 +276,15 @@ export const landingService = {
     }
   },
 
-  // Get available trainers
+  // Get available trainers (legacy support)
   getTrainers: async () => {
     try {
       const response = await api.get("/trainers");
       return response.data;
     } catch (error) {
-      // Return fallback data if API fails
       return {
         success: true,
         trainers: [],
-      };
-    }
-  },
-
-  // Get featured plans
-  getPlans: async () => {
-    try {
-      const response = await api.get("/plans");
-      return response.data;
-    } catch (error) {
-      // Return fallback data if API fails
-      return {
-        success: true,
-        plans: [],
       };
     }
   },
