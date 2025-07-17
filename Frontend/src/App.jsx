@@ -89,9 +89,14 @@ const AdminDashboard = () => (
 );
 
 function App() {
+  const { checkAuthStatus } = useAuth();
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
         <div className="App">
           <Routes>
             {/* Public Routes */}
