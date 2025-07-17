@@ -8,7 +8,7 @@ import {
   StarIcon,
   ArrowRightIcon,
 } from "@heroicons/react/24/outline";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { landingService } from "../services/authService";
 import Navbar from "../components/Landing/Navbar";
 import Footer from "../components/Landing/Footer";
