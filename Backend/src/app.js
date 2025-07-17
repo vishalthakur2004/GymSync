@@ -11,6 +11,8 @@ import memberRoutes from "./routes/member.routes.js";
 import planRoutes from "./routes/plan.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
+import statsRoutes from "./routes/stats.routes.js";
+import landingRoutes from "./routes/landing.routes.js";
 
 const app = express();
 
@@ -34,6 +36,8 @@ app.use("/api/member", memberRoutes);
 app.use("/api/plans", planRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/stats", statsRoutes);
+app.use("/api/landing", landingRoutes);
 
 app.get("/", (req, res) => {
   res.json({
